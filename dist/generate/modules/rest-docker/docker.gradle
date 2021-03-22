@@ -1,0 +1,29 @@
+task removeDockerImage(type: Exec) {
+    group "docker"
+    ignoreExitValue = true
+    commandLine "docker", "rmi", "${dockerImage}", "-f"
+}
+
+task copyDockerfile(type: Copy) {
+    group "docker"
+    from "${projectDir}/Dockerfile"
+    into "$buildDir"
+}
+
+task copyJarToDockerDir(type: Copy, dependsOn: bootJar) {
+    group "docker"
+    from "${projectDir}/build/libs"
+    include "**/*.jar"
+    into "$buildDir/docker"
+}
+
+task buildDockerImage(type: Exec, dependsOn: [copyDockerfile, copyJarToDockerDir, removeDockerImage]) {
+    group "docker"
+    workingDir "$buildDir"
+    commandLine "docker", "build", "-t", "${dockerImage}", "."
+}
+
+task pushDockerImage(type: Exec, dependsOn: buildDockerImage) {
+    group "docker"
+    commandLine "docker", "push", "${dockerImage}"
+}

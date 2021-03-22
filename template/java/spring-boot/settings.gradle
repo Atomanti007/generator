@@ -1,0 +1,5 @@
+rootProject.name = '{{name}}'
+
+include 'modules:interface'
+include 'modules:business'
+include 'modules:rest-docker'

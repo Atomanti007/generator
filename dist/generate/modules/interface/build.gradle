@@ -1,0 +1,37 @@
+plugins {
+    id 'maven-publish'
+    id 'org.springframework.boot' version "${springBoot}"
+    id 'io.spring.dependency-management' version "${springDependencyManagement}"
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId group
+            artifactId "${rootProject.name}-interface"
+            version version
+
+            from components.java
+        }
+    }
+}
+
+dependencies {
+    implementation 'hu.kzsolt.storesync:common:1.2.0-SNAPSHOT'
+
+    implementation 'javax.validation:validation-api'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    compileOnly  'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: "${openfeign}"
+}
