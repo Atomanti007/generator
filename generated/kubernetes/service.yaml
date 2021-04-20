@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{NAME}}
+  name: demo
   labels:
-    app: {{NAME}}
+    app: demo
   namespace: default
 spec:
   selector:
-    app: {{NAME}}
+    app: demo
   ports:
     - name: business
       protocol: TCP

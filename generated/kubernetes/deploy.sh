@@ -28,13 +28,13 @@ echo "Create cleint api deployment"
 envsubst < deployment.yaml | kubectl apply -f -
 
 echo ""
-echo "Create {{NAME}} service"
+echo "Create demo service"
 kubectl apply -f service.yaml
 
 echo ""
-echo "Create {{NAME}} prometheus metrics"
+echo "Create demo prometheus metrics"
 kubectl apply -f prometheus.yaml
 
 echo ""
-echo "Rollout {{NAME}} deployment"
-kubectl rollout restart deployment {{NAME}}
+echo "Rollout demo deployment"
+kubectl rollout restart deployment demo

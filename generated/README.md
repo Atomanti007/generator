@@ -1,6 +1,6 @@
-# storesync-{{NAME}}
+# storesync-demo
 
-{{NAME}} service
+demo service
 
 ## Requirements
 

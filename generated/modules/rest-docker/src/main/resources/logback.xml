@@ -4,7 +4,7 @@
 
     <appender name="STASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/mnt/log/log-{{NAME}}-rest-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/mnt/log/log-demo-rest-%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>

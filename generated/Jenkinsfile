@@ -23,7 +23,7 @@ podTemplate(
 
             stage('Git pull') {
                 startJob()
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Atomanti007/{{NAME}}.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Atomanti007/demo.git'
             }
 
             container('gradle') {
@@ -44,7 +44,7 @@ podTemplate(
                     sh 'cp ./modules/rest-docker/Dockerfile ./modules/rest-docker/build'
                     sh 'cp -R modules/rest-docker/build/libs modules/rest-docker/build/docker'
                     dir('./modules/rest-docker/build') {
-                        sh 'docker build -t {{NAME}}:1 .'
+                        sh 'docker build -t demo:1 .'
                     }
                 }
             }
@@ -60,7 +60,7 @@ podTemplate(
             container('docker') {
                 stage('Docker images push AWS') {
                     sh 'cp /root/.docker/raw/.dockerconfigjson /root/.docker/config.json'
-                    sh 'docker push 719012679654.dkr.ecr.eu-central-1.amazonaws.com/{{NAME}}:{{VERSION}}'
+                    sh 'docker push 719012679654.dkr.ecr.eu-central-1.amazonaws.com/demo:1.0.0'
                 }
             }
 
@@ -72,8 +72,8 @@ podTemplate(
                         sh 'kubectl apply -f deployment.yaml'
                         sh 'kubectl apply -f service.yaml'
     //                     sh 'kubectl apply -f prometheus.yaml'
-                        sh 'kubectl rollout restart deployment {{NAME}} -n storesync'
-                        sh 'kubectl rollout status deployment {{NAME}} -n storesync -w'
+                        sh 'kubectl rollout restart deployment demo -n storesync'
+                        sh 'kubectl rollout status deployment demo -n storesync -w'
                     }
                 }
             }

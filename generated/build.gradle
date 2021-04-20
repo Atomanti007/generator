@@ -3,7 +3,7 @@ allprojects {
     apply plugin: 'java-library'
 
     group 'hu.kzsolt.storesync'
-    version '{{VERSION}}'
+    version '1.0.0'
 
     compileJava.options.encoding = "UTF-8"
     compileTestJava.options.encoding = "UTF-8"

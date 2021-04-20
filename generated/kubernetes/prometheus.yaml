@@ -1,14 +1,14 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{NAME}}
+  name: demo
   namespace: default
   labels:
     release: prometheus
 spec:
   selector:
     matchLabels:
-      app: {{NAME}}
+      app: demo
   endpoints:
     - port: jmx
       path: /actuator/prometheus

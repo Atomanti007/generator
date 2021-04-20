@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{NAME}}
+  name: demo
   labels:
-    app: {{NAME}}
+    app: demo
   namespace: default
 spec:
   replicas: 1
@@ -15,16 +15,16 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      app: {{NAME}}
+      app: demo
   template:
     metadata:
       labels:
-        app: {{NAME}}
+        app: demo
     spec:
       containers:
-        - name: {{NAME}}
+        - name: demo
           image: >-
-            719012679654.dkr.ecr.eu-central-1.amazonaws.com/{{NAME}}:{{VERSION}}
+            719012679654.dkr.ecr.eu-central-1.amazonaws.com/demo:1.0.0
           ports:
             - name: business
               containerPort: 8080
