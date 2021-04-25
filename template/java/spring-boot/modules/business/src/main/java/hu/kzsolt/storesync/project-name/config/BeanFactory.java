@@ -1,4 +1,4 @@
-package hu.kzsolt.storesync.cacheman.uploader.config;
+package cacheman.uploader.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

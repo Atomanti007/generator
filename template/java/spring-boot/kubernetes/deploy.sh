@@ -24,7 +24,7 @@ else
 fi
 
 echo ""
-echo "Create cleint api deployment"
+echo "Create {{NAME}} deployment"
 envsubst < deployment.yaml | kubectl apply -f -
 
 echo ""
