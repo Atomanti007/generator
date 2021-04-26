@@ -1,6 +1,6 @@
-package {{package}}.service;
+package {{PACKAGE}}.service;
 
-import {{package}}.dto.StatusDto;
+import {{PACKAGE}}.dto.StatusDto;
 import hu.kzsolt.storesync.common.feign.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;

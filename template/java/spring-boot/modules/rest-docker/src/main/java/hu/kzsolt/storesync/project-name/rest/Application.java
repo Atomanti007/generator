@@ -1,4 +1,4 @@
-package {{package}}.rest;
+package {{PACKAGE}}.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
-@EntityScan("{{package}}.entity")
-@EnableJpaRepositories("{{package}}.repository")
-@ComponentScan({"{{package}}","hu.kzsolt.storesync.common"})
+@EntityScan("{{PACKAGE}}.entity")
+@EnableJpaRepositories("{{PACKAGE}}.repository")
+@ComponentScan({"{{PACKAGE}}","hu.kzsolt.storesync.common"})
 public class Application {
 
     public static void main(String[] args) {

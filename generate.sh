@@ -37,6 +37,7 @@ NAME="${input:-$NAME}"
 read -e -p "Please enter package [$PACKAGE]: " input
 PACKAGE="${input:-$PACKAGE}"
 PACKAGE=$PACKAGE.$(echo $NAME | sed "s/-/./")
+echo $PACKAGE
 
 
 read -e -p "Please enter db name [$DB_NAME]: " input

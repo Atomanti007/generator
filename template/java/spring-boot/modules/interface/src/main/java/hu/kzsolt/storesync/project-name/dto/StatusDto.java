@@ -1,4 +1,4 @@
-package {{package}}.dto;
+package {{PACKAGE}}.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
