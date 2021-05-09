@@ -3,7 +3,7 @@ FROM adoptopenjdk/openjdk11:alpine
 LABEL maintainer="Kulifay Zsolt"
 LABEL project="storesync"
 
-ARG JAR_FILE=./docker/*.jar
+ARG JAR_FILE=./build/libs/*.jar
 COPY ${JAR_FILE} app.jar
 
 ENV SPRING_SETTINGS test

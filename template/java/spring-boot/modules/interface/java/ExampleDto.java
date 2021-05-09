@@ -1,18 +1,16 @@
-package {{PACKAGE}}.dto;
+package {{CLASS_PACKAGE}}.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.Generated;
 
-/**
- * @author Kulifay Zsolt
- * Created at 2020. 11. 09.
- */
+@Generated
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class StatusDto {
+public class ExampleDto {
+    @JsonProperty("status")
     private String status;
 }

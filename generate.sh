@@ -1,16 +1,15 @@
 #!/bin/bash
 
 export NAME=demo
-export PACKAGE=hu.kzsolt.storesync
-export DB_NAME=DEMO-DB
+export PACKAGE=hu.storesync
 export VERSION=0.0.1
 
 ROOT_PATH=$(pwd)
 
-OUTPUT="./"
-#OUTPUT="./generated"
-TEMPLATE_PATH="$HOME/generator/template"
-#TEMPLATE_PATH="./template/java/spring-boot/"
+#OUTPUT="./"
+export OUTPUT="./generated"
+#TEMPLATE_PATH="$HOME/generator/template"
+export TEMPLATE_PATH="./template/java/spring-boot/"
 
 while read line; do
     export $line
@@ -22,7 +21,6 @@ do
   case $lang in
   "Java - Spring Boot")
   echo "Selected language: $lang."
-  TEMPLATE_PATH="$TEMPLATE_PATH/java/spring-boot/*"
   break
   ;;
   *)
@@ -36,22 +34,13 @@ NAME="${input:-$NAME}"
 
 read -e -p "Please enter package [$PACKAGE]: " input
 PACKAGE="${input:-$PACKAGE}"
-PACKAGE=$PACKAGE.$(echo $NAME | sed "s/-/./")
-echo $PACKAGE
 
 
 read -e -p "Please enter db name [$DB_NAME]: " input
-DB_NAME="${input:-$DB_NAME}"
+export DB_NAME="${input:-$DB_NAME}"
 
 
-cp -R $TEMPLATE_PATH $OUTPUT
+if [[ $lang == 'Java - Spring Boot' ]]; then
+  ./java_spring.sh
+fi
 
-
-find $OUTPUT -print0 | while IFS= read -r -d '' file
-do
-  if [ ! -d $file ] && [ ! ${file: -4} == ".jar" ];
-  then
-    echo $file
-    cat $file | mo > $file
-  fi
-done

@@ -2,7 +2,7 @@ allprojects {
     apply plugin: 'java'
     apply plugin: 'java-library'
 
-    group 'hu.kzsolt.storesync'
+    group '{{PACKAGE}}'
     version '{{VERSION}}'
 
     compileJava.options.encoding = "UTF-8"
