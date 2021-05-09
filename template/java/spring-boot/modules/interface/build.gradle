@@ -13,6 +13,15 @@ jar {
 }
 
 publishing {
+    repositories {
+        maven {
+            url = 'https://atomanti007.jfrog.io/artifactory/maven/'
+            credentials {
+                username = project.hasProperty('jfrog_user') ? "${jfrog_user}" : ""
+                password = project.hasProperty('jfrog_password') ? "${jfrog_password}" : ""
+            }
+        }
+    }
     publications {
         maven(MavenPublication) {
             groupId group

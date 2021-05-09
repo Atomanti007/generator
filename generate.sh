@@ -6,10 +6,10 @@ export VERSION=0.0.1
 
 ROOT_PATH=$(pwd)
 
-#OUTPUT="./"
-export OUTPUT="./generated"
-#TEMPLATE_PATH="$HOME/generator/template"
-export TEMPLATE_PATH="./template/java/spring-boot/"
+export OUTPUT="./"
+#export OUTPUT="./generated"
+export TEMPLATE_PATH="$HOME/generator/template"
+#export TEMPLATE_PATH="./template/java/spring-boot"
 
 while read line; do
     export $line
@@ -30,10 +30,10 @@ do
 done
 
 read -e -p "Please enter project name [$NAME]: " input
-NAME="${input:-$NAME}"
+export NAME="${input:-$NAME}"
 
 read -e -p "Please enter package [$PACKAGE]: " input
-PACKAGE="${input:-$PACKAGE}"
+export PACKAGE="${input:-$PACKAGE}"
 
 
 read -e -p "Please enter db name [$DB_NAME]: " input
@@ -41,6 +41,6 @@ export DB_NAME="${input:-$DB_NAME}"
 
 
 if [[ $lang == 'Java - Spring Boot' ]]; then
-  ./java_spring.sh
+  ~/generator/java_spring.sh
 fi
 

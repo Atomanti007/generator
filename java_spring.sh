@@ -1,14 +1,39 @@
 #!/bin/bash
 
-#JAVA_SPRING_TEMPLATE="./template/java/spring-boot"
-JAVA_SPRING_TEMPLATE="$TEMPLATE_PATH/java/spring-boot"
+# For local test
+#TEMPLATE_PATH="./template"
+#export NAME="test-project"
+#export PACKAGE="hu.storesync"
+#export VERSION=0.0.1
 #OUTPUT="./generated"
+#rm -rf $OUTPUT
+#mkdir $OUTPUT
 
-rm -rf $OUTPUT
-mkdir $OUTPUT
+echo "Start spring boot project generate"
+JAVA_SPRING_TEMPLATE="$TEMPLATE_PATH/java/spring-boot"
 
-export PACKAGE="hu.storesync"
-export NAME="test-project"
+if [[ -z $NAME ]]; then
+  echo "Missing project name"
+  exit 1
+fi
+if [[ -z $PACKAGE ]]; then
+  echo "Missing package"
+  exit 1
+fi
+if [[ -z $VERSION ]]; then
+  echo "Missing package"
+  exit 1
+fi
+if [[ -z $OUTPUT ]]; then
+  echo "Missing OUTPUT dir"
+  exit 1
+fi
+if [[ -z $TEMPLATE_PATH ]]; then
+  echo "Missing template dir"
+  exit 1
+fi
+
+
 export CAMEL_NAME=$(sed -r 's/(^|-)(\w)/\U\2/g' <<<"$NAME")
 
 packages=$(echo $PACKAGE | tr "." "\n")
