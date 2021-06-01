@@ -6,7 +6,7 @@ export VERSION=0.0.1
 
 ROOT_PATH=$(pwd)
 
-export OUTPUT="./"
+export OUTPUT="."
 #export OUTPUT="./generated"
 export TEMPLATE_PATH="$HOME/generator/template"
 #export TEMPLATE_PATH="./template/java/spring-boot"
@@ -44,3 +44,5 @@ if [[ $lang == 'Java - Spring Boot' ]]; then
   ~/generator/java_spring.sh
 fi
 
+~/generator/db.sh
+~/generator/kubernetes.sh

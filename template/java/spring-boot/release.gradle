@@ -1,4 +1,3 @@
-
 task release {
     group "release"
     doLast {
@@ -9,6 +8,30 @@ task release {
 
         println(version)
         println(newVersion)
+        String updatedVersion = buildFile.getText().replace(ver ,newVersion)
+
+        println "Change version: " + ver + " -> " + newVersion
+        buildFile.setText(updatedVersion)
+
+        println "Replace version in deployment.yaml"
+        String deployment = file("$projectDir/kubernetes/deployment.yaml").text
+        deployment = deployment.replace(ver, newVersion)
+        file("$projectDir/kubernetes/deployment.yaml").text = deployment
+
+        file("$projectDir/.version").text = newVersion
+    }
+}
+
+
+task newVersion {
+    group "release"
+    doLast {
+        String ver = buildFile.getText().find(version)
+        String v = ver.replaceFirst('-SNAPSHOT', '')
+
+        def (major, minor, patch) = v.tokenize('.')
+        int newPatch = patch.toInteger() + 1
+        String newVersion = major + "." + minor + "." + newPatch
         String updatedVersion = buildFile.getText().replace(ver ,newVersion)
 
         println "Change version: " + ver + " -> " + newVersion

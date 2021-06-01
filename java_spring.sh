@@ -105,7 +105,7 @@ cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-test.propert
 cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-prod.properties" "$OUTPUT/modules/rest-docker/src/main/resources/application-prod.properties"
 
 
-
+cp "$JAVA_SPRING_TEMPLATE/Makefile" "$OUTPUT/Makefile"
 cp "$JAVA_SPRING_TEMPLATE/.gitignore" "$OUTPUT/.gitignore"
 cp "$JAVA_SPRING_TEMPLATE/.gitattributes" "$OUTPUT/.gitattributes"
 
