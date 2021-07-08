@@ -56,5 +56,5 @@ cp "$ANGULAR_TEMPLATE/.github/workflows/deploy-dev.yml" "$OUTPUT/.github/workflo
 
 echo 'Add docker files'
 mkdir -p "$OUTPUT/docker"
-cp "$ANGULAR_TEMPLATE/docker/Dockerfile" "$OUTPUT/docker/Dockerfile"
+cat "$ANGULAR_TEMPLATE/docker/Dockerfile" | mo > "$OUTPUT/docker/Dockerfile"
 cp "$ANGULAR_TEMPLATE/docker/nginx.conf" "$OUTPUT/docker/nginx.conf"
