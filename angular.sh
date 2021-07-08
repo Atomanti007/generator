@@ -53,3 +53,8 @@ echo 'Add git workflows'
 mkdir -p "$OUTPUT/.github/workflows"
 cp "$ANGULAR_TEMPLATE/.github/workflows/build.yml" "$OUTPUT/.github/workflows/build.yml"
 cp "$ANGULAR_TEMPLATE/.github/workflows/deploy-dev.yml" "$OUTPUT/.github/workflows/deploy-dev.yml"
+
+echo 'Add docker files'
+mkdir -p "$OUTPUT/docker"
+cp "$ANGULAR_TEMPLATE/docker/Dockerfile" "$OUTPUT/docker/Dockerfile"
+cp "$ANGULAR_TEMPLATE/docker/nginx.conf" "$OUTPUT/docker/nginx.conf"
