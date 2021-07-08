@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $APP_NAME
+  labels:
+    app: $APP_NAME
+    version: $VERSION
+  namespace: $NAMESPACE
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: $APP_NAME
+  template:
+    metadata:
+      labels:
+        app: $APP_NAME
+    spec:
+      containers:
+        - name: $APP_NAME
+          image: >-
+            719012679654.dkr.ecr.eu-central-1.amazonaws.com/$APP_NAME:$TAG
+          ports:
+            - name: business
+              containerPort: 8080
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: business
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: business
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 2
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 100m
+            limits:
+              memory: 300Mi
+              cpu: 100m
+      imagePullSecrets:
+        - name: aws-registry

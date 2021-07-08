@@ -1,0 +1,23 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: $APP_NAME
+  namespace: $NAMESPACE
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: 'true'
+spec:
+  tls:
+    - hosts:
+        - bijo${POSTFIX}.storesync.io
+  rules:
+    - host: bijo${POSTFIX}.storesync.io
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: $APP_NAME
+                port:
+                  number: 8080

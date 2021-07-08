@@ -15,7 +15,7 @@ jar {
 publishing {
     repositories {
         maven {
-            url = 'https://atomanti007.jfrog.io/artifactory/maven/'
+            url = 'https://bijo.jfrog.io/artifactory/bijo-maven/'
             credentials {
                 username = project.hasProperty('jfrog_user') ? "${jfrog_user}" : ""
                 password = project.hasProperty('jfrog_password') ? "${jfrog_password}" : ""
