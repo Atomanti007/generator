@@ -12,21 +12,39 @@ export OUTPUT="."
 export TEMPLATE_PATH="$HOME/generator/template"
 #export TEMPLATE_PATH="./template/java/spring-boot"
 
+select selectgh in "Yes" "No"
+do
+  case $selectgh in
+    "Yes")
+    break
+    ;;
+    "No")
+    break
+    ;;
+    *)
+    echo "Invalid option."
+    ;;
+  esac
+done
+
+if [[ $selectgh == 'Yes' ]]; then
+  ~/generator/gh.sh
+fi
 
 select lang in "Java - Spring Boot" "Angular"
 do
   case $lang in
-  "Java - Spring Boot")
-  echo "Selected language: $lang."
-  break
-  ;;
-  "Angular")
-  echo "Selected language: $lang."
-  break
-  ;;
-  *)
-  echo "Invalid language."
-  ;;
+    "Java - Spring Boot")
+    echo "Selected language: $lang."
+    break
+    ;;
+    "Angular")
+    echo "Selected language: $lang."
+    break
+    ;;
+    *)
+    echo "Invalid language."
+    ;;
   esac
 done
 

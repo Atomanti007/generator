@@ -23,12 +23,12 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'hu.kzsolt.storesync:common:1.2.0-SNAPSHOT'
+    implementation "hu.kzsolt.storesync:common:${commonVersion}"
     implementation project(':modules:interface')
 
     //    Use lombok before mapstruct
-    compileOnly  'org.projectlombok:lombok:1.18.16'
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    compileOnly  "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
@@ -45,6 +45,9 @@ dependencies {
 
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.8.0'
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+    testImplementation 'io.rest-assured:rest-assured'
+    testImplementation 'io.rest-assured:xml-path:4.2.0'
+    testImplementation 'io.rest-assured:spring-mock-mvc'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

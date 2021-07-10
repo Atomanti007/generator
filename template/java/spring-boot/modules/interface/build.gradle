@@ -34,7 +34,7 @@ publishing {
 }
 
 dependencies {
-    implementation 'hu.kzsolt.storesync:common:1.2.0-SNAPSHOT'
+    implementation "hu.kzsolt.storesync:common:${commonVersion}"
 
     implementation 'javax.validation:validation-api'
     implementation 'com.fasterxml.jackson.core:jackson-databind'

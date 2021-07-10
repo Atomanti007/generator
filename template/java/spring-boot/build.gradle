@@ -20,6 +20,8 @@ allprojects {
         dockerHost = "719012679654.dkr.ecr.eu-central-1.amazonaws.com"
         logstashLogbackEncoder = "6.4"
         openfeign = "3.0.2"
+        commonVersion = "1.2.2"
+        lombokVersion = "1.18.16"
     }
 
     repositories {
