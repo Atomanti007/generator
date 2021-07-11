@@ -12,6 +12,9 @@ export OUTPUT="."
 export TEMPLATE_PATH="$HOME/generator/template"
 #export TEMPLATE_PATH="./template/java/spring-boot"
 
+read -e -p "Please enter project name [$NAME]: " input
+export NAME="${input:-$NAME}"
+
 select selectgh in "Yes" "No"
 do
   case $selectgh in
@@ -28,7 +31,8 @@ do
 done
 
 if [[ $selectgh == 'Yes' ]]; then
-  ~/generator/gh.sh
+  source ~/generator/git.sh
+  git_init
 fi
 
 select lang in "Java - Spring Boot" "Angular"
@@ -48,9 +52,6 @@ do
   esac
 done
 
-read -e -p "Please enter project name [$NAME]: " input
-export NAME="${input:-$NAME}"
-
 
 if [[ $lang == 'Java - Spring Boot' ]]; then
 
@@ -61,8 +62,6 @@ if [[ $lang == 'Java - Spring Boot' ]]; then
   export DB_NAME="${input:-$DB_NAME}"
 
   ~/generator/java_spring.sh
-  ~/generator/db.sh
-  ~/generator/kubernetes.sh
 fi
 
 if [[ $lang == 'Angular' ]]; then
@@ -70,3 +69,6 @@ if [[ $lang == 'Angular' ]]; then
 fi
 
 
+if [[ $selectgh == 'Yes' ]]; then
+  init_commit
+fi

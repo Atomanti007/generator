@@ -103,6 +103,7 @@ cat "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application.properties"
 cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-dev.properties" "$OUTPUT/modules/rest-docker/src/main/resources/application-dev.properties"
 cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-test.properties" "$OUTPUT/modules/rest-docker/src/main/resources/application-test.properties"
 cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-prod.properties" "$OUTPUT/modules/rest-docker/src/main/resources/application-prod.properties"
+cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/logback.xml" "$OUTPUT/modules/rest-docker/src/main/resources/logback.xml"
 
 
 cp "$JAVA_SPRING_TEMPLATE/Makefile" "$OUTPUT/Makefile"
@@ -117,5 +118,26 @@ cd $OUTPUT || exit 1
 gradle wrapper --gradle-version 6.8 --distribution-type bin
 
 ./gradlew build
+
+echo 'Add kubernetes descriptors'
+KUBERNETES_TEMPLATE="$JAVA_SPRING_TEMPLATE/kubernetes"
+
+mkdir -p "$OUTPUT/kubernetes"
+cp "$KUBERNETES_TEMPLATE/deployment.yaml" "$OUTPUT/kubernetes/deployment.yaml"
+cp "$KUBERNETES_TEMPLATE/prometheus.yaml" "$OUTPUT/kubernetes/prometheus.yaml"
+cp "$KUBERNETES_TEMPLATE/service.yaml" "$OUTPUT/kubernetes/service.yaml"
+
+
+echo 'Add liquibase'
+LIQUIBASE_TEMPLATE="$JAVA_SPRING_TEMPLATE/liquibase"
+
+mkdir -p "$OUTPUT/liquibase"
+cp -r "$LIQUIBASE_TEMPLATE" "$OUTPUT"
+
+
+echo 'Add git workflows'
+mkdir -p "$OUTPUT/.github/workflows"
+cp "$JAVA_SPRING_TEMPLATE/.github/workflows/build.yml" "$OUTPUT/.github/workflows/build.yml"
+cp "$JAVA_SPRING_TEMPLATE/.github/workflows/deploy-dev.yml" "$OUTPUT/.github/workflows/deploy-dev.yml"
 
 

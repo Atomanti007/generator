@@ -2,7 +2,7 @@
 
 name: Deploy to DEV
 
-# Controls when the action will run.
+# Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -28,5 +28,5 @@ jobs:
           api_token: ${{secrets.JENKINS_TOKEN}}
           jenkins_url: ${{secrets.JENKINS_URL}}
           wait: false
-          job_name: 'Bijo/job/Angular_Frontent_Deploy_to_DEV'
+          job_name: 'Bijo/job/Java_Backend_Deploy_to_DEV'
 

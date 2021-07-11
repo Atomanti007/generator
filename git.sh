@@ -8,15 +8,35 @@ fi
 
 while read line; do
     export $line
-done < secret.properties
+done < ~/generator/secret.properties
 
-gh repo create "$NAME" --private --confirm
 
-gh repo clone "$NAME"
-cd "$NAME" || exit 1
+function git_init() {
 
-gh secret set JENKINS_URL  -b"${JENKINS_URL}"
-gh secret set JENKINS_USER  -b"${JENKINS_USER}"
-gh secret set JENKINS_TOKEN  -b"${JENKINS_TOKEN}"
+  git init "$NAME"
+
+  cd "$NAME" || exit 1
+
+  gh repo create
+
+  gh secret set JENKINS_URL -b"${JENKINS_URL}"
+  gh secret set JENKINS_USER -b"${JENKINS_USER}"
+  gh secret set JENKINS_TOKEN -b"${JENKINS_TOKEN}"
+
+}
+
+function init_commit() {
+
+  echo 'Add files local repository'
+  git add .
+
+  echo 'Initial commit'
+  git commit -m "Init"
+  git branch -M main
+
+  echo 'Git push'
+  git push -u origin main
+
+}
 
 
