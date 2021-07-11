@@ -27,6 +27,9 @@ function git_init() {
 
 function init_commit() {
 
+  echo 'Add submodule'
+  git submodule add -b main git@github.com:Atomanti007/storesync-build.git
+
   echo 'Add files local repository'
   git add .
 
