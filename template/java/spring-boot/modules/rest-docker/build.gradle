@@ -17,6 +17,9 @@ dependencies {
     implementation "io.springfox:springfox-swagger-ui:${springfoxswagger}"
     implementation "org.springdoc:springdoc-openapi-ui:${springdocOpenapiUi}"
 
+//    Liquibase
+    implementation("org.liquibase:liquibase-core:${liquibaseVersion}")
+
 //    Prometheus metrics
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'io.micrometer:micrometer-registry-prometheus'

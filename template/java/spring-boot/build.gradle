@@ -22,6 +22,7 @@ allprojects {
         openfeign = "3.0.2"
         commonVersion = "1.2.2"
         lombokVersion = "1.18.16"
+        liquibaseVersion = "3.10.3"
     }
 
     repositories {

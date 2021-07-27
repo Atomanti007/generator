@@ -38,6 +38,8 @@ spec:
                 configMapKeyRef:
                   name: global-eviroments
                   key: env
+            - name: JAVA_OPTS
+              value: '-Xmx1G'
           livenessProbe:
             httpGet:
               path: /actuator/health

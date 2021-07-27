@@ -4,6 +4,7 @@ export NAME=demo
 export VERSION=1.0.0
 export PACKAGE=hu.kzsolt
 export DB_NAME=demo
+export IS_DB=false
 
 ROOT_PATH=$(pwd)
 
@@ -15,6 +16,7 @@ export TEMPLATE_PATH="$HOME/generator/template"
 read -e -p "Please enter project name [$NAME]: " input
 export NAME="${input:-$NAME}"
 
+echo "Would you like to create github repo"
 select selectgh in "Yes" "No"
 do
   case $selectgh in
