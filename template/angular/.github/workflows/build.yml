@@ -27,5 +27,5 @@ jobs:
           user_name: ${{secrets.JENKINS_USER}}
           api_token: ${{secrets.JENKINS_TOKEN}}
           jenkins_url: ${{secrets.JENKINS_URL}}
-          job_name: 'Bijo/job/Java_Backend_Build'
+          job_name: 'Bijo/job/Angular_Frontend_Build'
 
