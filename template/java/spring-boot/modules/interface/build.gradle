@@ -39,8 +39,8 @@ dependencies {
     implementation 'javax.validation:validation-api'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
 
-    compileOnly  'org.projectlombok:lombok:1.18.16'
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    compileOnly  "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: "${openfeign}"
 }
