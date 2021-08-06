@@ -4,7 +4,10 @@ export NAME=demo
 export VERSION=1.0.0
 export PACKAGE=hu.kzsolt
 export DB_NAME=demo
-export IS_DB=false
+export IS_DB=
+export NAMESPACE="demo"
+
+source ~/generator/git.sh
 
 ROOT_PATH=$(pwd)
 
@@ -33,7 +36,6 @@ do
 done
 
 if [[ $selectgh == 'Yes' ]]; then
-  source ~/generator/git.sh
   git_init
 fi
 
@@ -54,6 +56,9 @@ do
   esac
 done
 
+read -e -p "Please enter kubernetes namespace [$NAMESPACE]: " input
+export NAMESPACE="${input:-$NAMESPACE}"
+
 
 if [[ $lang == 'Java - Spring Boot' ]]; then
 
@@ -73,4 +78,6 @@ fi
 
 if [[ $selectgh == 'Yes' ]]; then
   init_commit
+else
+  init_submodule
 fi

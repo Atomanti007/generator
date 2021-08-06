@@ -26,7 +26,7 @@ jq -r '.version' package.json >> .version
 jq -r '.name' package.json >> .name
 
 echo 'Add build submodule'
-git submodule add -b main git@github.com:Atomanti007/storesync-build.git
+git submodule add -b main git@github.com:Atomanti007/make-build.git
 
 
 echo 'Add environments'

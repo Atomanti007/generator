@@ -1,4 +1,4 @@
-include ./storesync-build/Makefile.git
-include ./storesync-build/Makefile.angular
+include ./make-build/Makefile.git
+include ./make-build/Makefile.angular
 
 export namespace:={{NAMESPACE}}

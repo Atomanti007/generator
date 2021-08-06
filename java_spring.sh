@@ -1,14 +1,5 @@
 #!/bin/bash
 
-# For local test
-#TEMPLATE_PATH="./template"
-#export NAME="test-project"
-#export PACKAGE="hu.storesync"
-#export VERSION=0.0.1
-#OUTPUT="./generated"
-#rm -rf $OUTPUT
-#mkdir $OUTPUT
-
 echo "Start spring boot project generate"
 JAVA_SPRING_TEMPLATE="$TEMPLATE_PATH/java/spring-boot"
 
@@ -59,12 +50,15 @@ mkdir -p "$OUTPUT/modules/business/src/main/java/$package_path/config"
 cat "$JAVA_SPRING_TEMPLATE/modules/business/java/BeanFactory.java" | mo > "$OUTPUT/modules/business/src/main/java/$package_path/config/BeanFactory.java"
 mkdir -p "$OUTPUT/modules/business/src/main/java/$package_path/controller"
 cat "$JAVA_SPRING_TEMPLATE/modules/business/java/ExampleController.java" | mo > "$OUTPUT/modules/business/src/main/java/$package_path/controller/ExampleController.java"
-mkdir -p "$OUTPUT/modules/business/src/main/java/$package_path/entity"
-cat "$JAVA_SPRING_TEMPLATE/modules/business/java/ExampleEntity.java" | mo > "$OUTPUT/modules/business/src/main/java/$package_path/entity/ExampleEntity.java"
-mkdir -p "$OUTPUT/modules/business/src/main/java/$package_path/mapper"
-cat "$JAVA_SPRING_TEMPLATE/modules/business/java/ExampleMapper.java" | mo > "$OUTPUT/modules/business/src/main/java/$package_path/mapper/ExampleMapper.java"
-mkdir -p "$OUTPUT/modules/business/src/main/java/$package_path/repository"
-cat "$JAVA_SPRING_TEMPLATE/modules/business/java/ExampleRepository.java" | mo > "$OUTPUT/modules/business/src/main/java/$package_path/repository/ExampleRepository.java"
+
+if [[ $IS_DB = "TRUE" ]]; then
+  mkdir -p "$OUTPUT/modules/business/src/main/java/$package_path/entity"
+  cat "$JAVA_SPRING_TEMPLATE/modules/business/java/ExampleEntity.java" | mo > "$OUTPUT/modules/business/src/main/java/$package_path/entity/ExampleEntity.java"
+  mkdir -p "$OUTPUT/modules/business/src/main/java/$package_path/mapper"
+  cat "$JAVA_SPRING_TEMPLATE/modules/business/java/ExampleMapper.java" | mo > "$OUTPUT/modules/business/src/main/java/$package_path/mapper/ExampleMapper.java"
+  mkdir -p "$OUTPUT/modules/business/src/main/java/$package_path/repository"
+  cat "$JAVA_SPRING_TEMPLATE/modules/business/java/ExampleRepository.java" | mo > "$OUTPUT/modules/business/src/main/java/$package_path/repository/ExampleRepository.java"
+fi
 
 mkdir -p "$OUTPUT/modules/business/src/test"
 mkdir -p "$OUTPUT/modules/business/src/test/java"
@@ -100,13 +94,13 @@ cat "$JAVA_SPRING_TEMPLATE/modules/rest-docker/java/Application.java" | mo > "$O
 
 mkdir -p "$OUTPUT/modules/rest-docker/src/main/resources"
 cat "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application.properties" | mo > "$OUTPUT/modules/rest-docker/src/main/resources/application.properties"
-cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-dev.properties" "$OUTPUT/modules/rest-docker/src/main/resources/application-dev.properties"
-cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-test.properties" "$OUTPUT/modules/rest-docker/src/main/resources/application-test.properties"
-cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-prod.properties" "$OUTPUT/modules/rest-docker/src/main/resources/application-prod.properties"
+cat "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-dev.properties" | mo > "$OUTPUT/modules/rest-docker/src/main/resources/application-dev.properties"
+cat "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-test.properties" | mo > "$OUTPUT/modules/rest-docker/src/main/resources/application-test.properties"
+cat "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/application-prod.properties" | mo > "$OUTPUT/modules/rest-docker/src/main/resources/application-prod.properties"
 cp "$JAVA_SPRING_TEMPLATE/modules/rest-docker/resources/logback.xml" "$OUTPUT/modules/rest-docker/src/main/resources/logback.xml"
 
 
-cp "$JAVA_SPRING_TEMPLATE/Makefile" "$OUTPUT/Makefile"
+cat "$JAVA_SPRING_TEMPLATE/Makefile" | mo > "$OUTPUT/Makefile"
 cp "$JAVA_SPRING_TEMPLATE/.gitignore" "$OUTPUT/.gitignore"
 cp "$JAVA_SPRING_TEMPLATE/.gitattributes" "$OUTPUT/.gitattributes"
 

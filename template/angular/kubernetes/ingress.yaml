@@ -9,9 +9,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - bijo${POSTFIX}.storesync.io
+        - demo{POSTFIX}.storesync.io
   rules:
-    - host: bijo${POSTFIX}.storesync.io
+    - host: demo{POSTFIX}.storesync.io
       http:
         paths:
           - path: /

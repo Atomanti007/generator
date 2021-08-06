@@ -1,6 +1,5 @@
 --liquibase formatted sql
 
-
 --changeset zsolt:1596478175445-1
 create table EXAMPLE
 (

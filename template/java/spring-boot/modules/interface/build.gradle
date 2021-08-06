@@ -15,7 +15,7 @@ jar {
 publishing {
     repositories {
         maven {
-            url = 'https://bijo.jfrog.io/artifactory/bijo-maven/'
+            url = 'https://bijo.jfrog.io/artifactory/demo-maven/'
             credentials {
                 username = project.hasProperty('jfrog_user') ? "${jfrog_user}" : ""
                 password = project.hasProperty('jfrog_password') ? "${jfrog_password}" : ""
@@ -34,7 +34,7 @@ publishing {
 }
 
 dependencies {
-    implementation "hu.kzsolt.storesync:common:${commonVersion}"
+    implementation "hu.kzsolt:common:${commonVersion}"
 
     implementation 'javax.validation:validation-api'
     implementation 'com.fasterxml.jackson.core:jackson-databind'

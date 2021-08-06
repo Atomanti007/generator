@@ -8,8 +8,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
+{{#IS_DB}}
 @EntityScan("{{CLASS_PACKAGE}}.entity")
 @EnableJpaRepositories("{{CLASS_PACKAGE}}.repository")
+{{/IS_DB}}
 @ComponentScan({"{{CLASS_PACKAGE}}", "hu.kzsolt.storesync.common"})
 public class Application {
 

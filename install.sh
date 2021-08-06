@@ -9,3 +9,5 @@ sudo mv pgen /usr/local/bin/
 curl -sSL https://git.io/get-mo -o mo
 chmod +x mo
 sudo mv mo /usr/local/bin/
+
+sudo apt-get install dialog
